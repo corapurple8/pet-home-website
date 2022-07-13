@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="60d54f23-bee4-4d4d-a8b5-20d8a4f8f827" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1acGGvvkldZT3k0V8FmcOKHhFL8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pethome" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ruanjian\idea\Workspace_idea\Pethome_web\Pethome_Front" />
+      <recent name="D:\ruanjian\idea\Workspace_idea\Pethome_web\PetHome_Admin\src\views\pet" />
+      <recent name="D:\ruanjian\idea\Workspace_idea\Pethome_web\PetHome_Admin\src\common" />
+      <recent name="D:\ruanjian\idea\Workspace_idea\Pethome_web\PetHome_Admin\src\views\product" />
+      <recent name="D:\ruanjian\idea\Workspace_idea\Pethome_web\PetHome_Admin\src\views\user" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60d54f23-bee4-4d4d-a8b5-20d8a4f8f827" name="Default Changelist" comment="" />
+      <created>1587027376169</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587027376169</updated>
+      <workItem from="1587027383927" duration="77000" />
+      <workItem from="1587027656783" duration="2639000" />
+      <workItem from="1587085194221" duration="12213000" />
+      <workItem from="1587174016699" duration="73000" />
+      <workItem from="1587346298691" duration="12588000" />
+      <workItem from="1587430414177" duration="661000" />
+      <workItem from="1587535219824" duration="198000" />
+      <workItem from="1587541166974" duration="2153000" />
+      <workItem from="1587609124364" duration="5447000" />
+      <workItem from="1587689401662" duration="1390000" />
+      <workItem from="1587890136038" duration="2595000" />
+      <workItem from="1587949242035" duration="1338000" />
+      <workItem from="1588035656250" duration="2909000" />
+      <workItem from="1588121696203" duration="8085000" />
+      <workItem from="1588215203525" duration="3483000" />
+      <workItem from="1588726388541" duration="792000" />
+      <workItem from="1588812891386" duration="599000" />
+      <workItem from="1588985931307" duration="595000" />
+      <workItem from="1589073138857" duration="494000" />
+      <workItem from="1589438165329" duration="1025000" />
+      <workItem from="1589439220802" duration="12000" />
+      <workItem from="1589850125385" duration="2703000" />
+      <workItem from="1589979160613" duration="4000" />
+      <workItem from="1590238128355" duration="218000" />
+      <workItem from="1602557694991" duration="1434000" />
+      <workItem from="1602559224640" duration="12950000" />
+      <workItem from="1602597125871" duration="1286000" />
+      <workItem from="1602638163383" duration="23084000" />
+      <workItem from="1602719709754" duration="5041000" />
+      <workItem from="1602817031737" duration="1273000" />
+      <workItem from="1602837572489" duration="1474000" />
+      <workItem from="1602844425255" duration="272000" />
+      <workItem from="1602845062017" duration="518000" />
+      <workItem from="1602896631998" duration="2704000" />
+      <workItem from="1603002456850" duration="2266000" />
+      <workItem from="1603012570388" duration="12959000" />
+      <workItem from="1603069957302" duration="1922000" />
+      <workItem from="1603089708323" duration="624000" />
+      <workItem from="1603163483776" duration="2727000" />
+      <workItem from="1603167783861" duration="11990000" />
+      <workItem from="1603200901412" duration="4443000" />
+      <workItem from="1603261093421" duration="9723000" />
+      <workItem from="1603328776635" duration="17781000" />
+      <workItem from="1603384192571" duration="4812000" />
+      <workItem from="1603415559883" duration="17596000" />
+      <workItem from="1603496383670" duration="14231000" />
+      <workItem from="1603514209394" duration="4442000" />
+      <workItem from="1603587933889" duration="11286000" />
+      <workItem from="1603633633004" duration="12795000" />
+      <workItem from="1603652496666" duration="192000" />
+      <workItem from="1603652703998" duration="1443000" />
+      <workItem from="1603654256481" duration="1328000" />
+      <workItem from="1603668912884" duration="27687000" />
+      <workItem from="1603760866047" duration="6512000" />
+      <workItem from="1603847301831" duration="6077000" />
+      <workItem from="1603891084566" duration="5348000" />
+      <workItem from="1603932929602" duration="10649000" />
+      <workItem from="1604017900433" duration="14633000" />
+      <workItem from="1604052241282" duration="12285000" />
+      <workItem from="1604107266380" duration="5558000" />
+      <workItem from="1604166840723" duration="6463000" />
+      <workItem from="1604174200282" duration="617000" />
+      <workItem from="1604190872345" duration="6923000" />
+      <workItem from="1604370832641" duration="12852000" />
+      <workItem from="1604451077251" duration="1422000" />
+      <workItem from="1604475136562" duration="2488000" />
+      <workItem from="1604543323520" duration="9377000" />
+      <workItem from="1604945416412" duration="2922000" />
+      <workItem from="1604949588828" duration="161000" />
+      <workItem from="1605775723805" duration="717000" />
+      <workItem from="1606718785650" duration="1740000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="63" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603194047851">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="63" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603194047851" />
+    <state x="476" y="196" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603652438446">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="476" y="196" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1603652438446" />
+    <state x="433" y="99" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604029816691">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="433" y="99" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1604029816691" />
+    <state x="496" y="109" key="FileChooserDialogImpl" timestamp="1604485390102">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="496" y="109" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604485390102" />
+    <state x="153" y="0" key="SettingsEditor" timestamp="1602844550596">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="153" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602844550596" />
+    <state x="0" y="0" width="737" height="824" key="find.popup" timestamp="1603177393775">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="0" width="737" height="824" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603177393775" />
+    <state x="0" y="22" key="new project wizard" timestamp="1603091028861">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="22" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1603091028861" />
+    <state x="341" y="183" key="run.anything.popup" timestamp="1604064093703">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="341" y="183" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604064093703" />
+    <state x="347" y="0" width="840" height="822" key="search.everywhere.popup" timestamp="1603270783407">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="347" y="0" width="840" height="822" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603270783407" />
+  </component>
+</project>

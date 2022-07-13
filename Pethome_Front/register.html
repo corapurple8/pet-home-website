@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="stylesheet" href="./AmazeUI-2.4.2/assets/css/amazeui.min.css" />
+	<link href="./css/dlstyle.css" rel="stylesheet" type="text/css">
+	<script src="./AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+	<script src="./AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+	<!--导入vue包-->
+	<script src="plugins/vue/dist/vue.js"></script>
+	<!--导入axios包-->
+	<script src="plugins/axios/dist/axios.js"></script>
+	<!--导入全局设置-->
+	<script src="js/common.js"></script>
+	<script type="text/css">
+		.validate_msg{
+		font-size: 12px;
+		color: red;
+		}
+	</script>
+</head>
+
+<body>
+
+<div class="login-boxtitle">
+	<a href="home/demo.html"><img alt="" src="./images/logobig.png" /></a>
+</div>
+<!--准备挂载-->
+<div class="res-banner" id="app">
+	<div class="res-main">
+		<div class="login-banner-bg"><span></span><img src="./images/big.jpg" /></div>
+		<div class="login-box">
+
+			<div class="am-tabs" id="doc-my-tabs">
+				<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+					<li class="am-active"><a href="">邮箱注册</a></li>
+					<li><a href="">手机号注册</a></li>
+				</ul>
+
+				<div class="am-tabs-bd">
+					<div class="am-tab-panel am-active">
+						<form method="post" :model="emailRegForm">
+
+							<div class="user-email">
+								<label for="email"><i class="am-icon-envelope-o"></i></label>
+								<input @blur="checkEmail" type="email" v-model="emailRegForm.email" id="email" placeholder="请输入邮箱账号">
+								<span class="validate_msg">{{email_validate_msg}}</span>
+							</div>
+							<div class="user-pass passwordFirst">
+								<label for="password_emailReg"><i class="am-icon-lock"></i></label>
+								<input type="password" v-model="emailRegForm.password" id="password_emailReg" placeholder="设置密码">
+							</div>
+							<div class="user-pass passwordFirst">
+								<label for="passwordRepeat_emailReg"><i class="am-icon-lock"></i></label>
+								<input type="password" @blur="checkPassword" v-model="emailRegForm.passwordRepeat" id="passwordRepeat_emailReg" placeholder="确认密码">
+								<span class="validate_msg">{{password_validate_msg_email}}</span>
+							</div>
+
+						</form>
+
+						<div class="login-links">
+							<label for="reader-me">
+								<input id="reader-me_emailReg" type="checkbox" v-model="reader_me_email"> 点击表示您同意商城《服务协议》
+							</label>
+						</div>
+						<div class="am-cf">
+							<input type="submit" @click="emailSubmit" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+						</div>
+
+					</div>
+
+					<div class="am-tab-panel">
+						<form method="post" :model="phoneRegForm">
+							<div class="user-phone">
+								<label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
+								<input @blur="checkPhoneNumber" required="required" type="tel" id="phone" v-model="phoneRegForm.phone" placeholder="请输入手机号">
+								<span class="validate_msg">{{phone_validate_msg}}</span>
+							</div>
+							<div class="verification">
+								<label for="code"><i class="am-icon-code-fork"></i></label>
+								<input required="required" type="tel" v-model="phoneRegForm.code" id="code" placeholder="请输入验证码" @blur="check_code">
+
+								<button type="button" class="btn"  @click="sendMobileCode" id="dyMobileButton" :disabled="btnDisabled">
+									{{btnText}}</button>
+								<div><span class="validate_msg">{{code_validate_msg}}</span></div>
+							</div>
+							<div class="user-pass passwordSecond">
+								<label for="password"><i class="am-icon-lock"></i></label>
+								<input required="required" type="password" v-model="phoneRegForm.password" id="password" placeholder="设置密码">
+								<span class="validate_msg">{{password_validate_msg}}</span>
+							</div>
+							<div class="user-pass passwordSecond">
+								<label for="passwordRepeat"><i class="am-icon-lock"></i></label>
+								<input @blur="check_password_phone"  required="required" type="password" v-model="phoneRegForm.passwordRepeat" id="passwordRepeat" placeholder="确认密码">
+								<span class="validate_msg" >{{passwordRepeat_validate_msg}}</span>
+							</div>
+						</form>
+						<div class="login-links">
+							<label for="reader-me">
+								<input required="required" id="reader-me" type="checkbox" v-model="reader_me"> 点击表示您同意商城《服务协议》
+								<span class="validate_msg">{{read_validate_msg}}</span>
+							</label>
+						</div>
+						<div class="am-cf">
+							<input @click="phone_submit" type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+						</div>
+
+						<hr>
+					</div>
+
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="footer ">
+	<div class="footer-hd ">
+		<p>
+			<a href="# ">恒望科技</a>
+			<b>|</b>
+			<a href="# ">商城首页</a>
+			<b>|</b>
+			<a href="# ">支付宝</a>
+			<b>|</b>
+			<a href="# ">物流</a>
+		</p>
+	</div>
+	<div class="footer-bd ">
+		<p>
+			<a href="# ">关于恒望</a>
+			<a href="# ">合作伙伴</a>
+			<a href="# ">联系我们</a>
+			<a href="# ">网站地图</a>
+		</p>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	$(function() {
+		$('#doc-my-tabs').tabs();//初始化选项卡组件
+	})
+	let app = new Vue({//挂载
+		el:"#app",
+		data(){
+			return{
+				phoneRegForm:{//手机号注册表单
+					phone:"",//手机号
+					code:"",//验证码
+					password:"",//密码
+					passwordRepeat:"",//重复密码
+				},
+				reader_me:false,
+				//验证过程提示消息
+				phone_validate_msg:"",
+				code_validate_msg:"",
+				password_validate_msg:"",
+				passwordRepeat_validate_msg:"",
+				read_validate_msg:"",
+				//按钮内容  获取按钮和倒计时
+				btnText:"获取",
+				//按钮是否禁用
+				btnDisabled:true,
+
+
+				//邮箱注册
+				emailRegForm:{
+					email:"",
+					password:"",//密码
+					passwordRepeat:"",//重复密码
+				},
+				//邮箱相关验证消息
+				reader_me_email:false,
+				email_validate_msg:"",
+				password_validate_msg_email:"",
+			}
+		},
+		methods:{
+			checkPhoneNumber(){
+				//判断手机号
+				if (!this.phoneRegForm.phone){
+					//手机号为空则显示提示消息
+					this.phone_validate_msg="手机号不能为空";
+					//输入框变红
+					$(".user-phone").css("color","red");
+					return;//一定要返回 不然会继续判断
+				}
+				//正则表达式 开始^ 1 3(3-9的一个) 9个其他数 结束符
+				//如果手机号的格式不满足正则表达式
+				if (!/^1(3|4|5|6|7|8|9)[0-9]{9}$/.test(this.phoneRegForm.phone)){
+					//显示提示消息
+					this.phone_validate_msg="请输入正确的手机号";
+					//输入框变红
+					$(".user-phone").css("color","red");
+					return;
+				}
+				//满足格式的手机号直接发送请求
+				this.$http.get("/login/checkPhoneNumber/"+this.phoneRegForm.phone).then(res=>{
+					//console.debug(res.data);
+					let {success,msg,data}=res.data;
+					if (success){//该手机号没在数据库，可以注册 直接修改样式为绿色
+						$(".user-phone").css("color","green");
+						this.phone_validate_msg="";
+						//启用按钮
+						this.btnDisabled=false;
+					}else {
+						//显示提示消息
+						this.phone_validate_msg=msg;//该手机号已被注册
+						//输入框变红
+						$(".user-phone").css("color","red");
+					}
+				})
+			},
+			//发送验证码的点击事件
+			sendMobileCode(){
+				//设置为禁用按钮
+				this.btnDisabled = true;
+				//修改按钮内容为倒计时
+				//将当前this与计时器中this区分
+				let _this = this;
+				let time = 60;
+				_this.btnText = time;
+				let intervalID = setInterval(function () {
+					_this.btnText = --time;
+					if (time ==0){
+						//改为启用
+						_this.btnDisabled=false;
+						//将内容改回获取
+						_this.btnText="获取";
+						//结束定时任务
+						clearInterval(intervalID);
+					}
+				},1000)//每隔一秒钟改变值
+				//发送请求获取验证码
+				this.$http.get("/login/sendMobileCode/"+this.phoneRegForm.phone).then(res=>{
+					let {success,msg,data}=res.data;
+					if (!success){
+						this.code_validate_msg=msg;
+						//设置为红色
+						$(".verification").css("color","red")
+					}else {
+						this.code_validate_msg=msg;
+						$(".verification").css("color","green")
+					}
+				})
+			},
+			//验证密码是否相同
+			check_password_phone(){
+				if (!this.phoneRegForm.password||!this.phoneRegForm.passwordRepeat){
+					//提示密码不能为空
+					this.passwordRepeat_validate_msg = "密码不能为空";
+					$('.passwordSecond').css("color","red");
+					return;
+				}else if (this.phoneRegForm.password!=this.phoneRegForm.passwordRepeat){
+					this.passwordRepeat_validate_msg = "确认密码必须一致";
+					$('.passwordSecond').css("color","red");
+					return;
+				}
+				//成功验证相同
+				this.passwordRepeat_validate_msg = "";
+				$('.passwordSecond').css("color","green");
+			},
+			check_reader_phone(){
+				if (!this.reader_me){
+					$('.login-links').css("color","red");
+				}else {
+					$('.login-links').css("color","green");
+				}
+			},
+			check_code(){
+				if (!this.phoneRegForm.code){
+					this.code_validate_msg = "请输入验证码";
+					$(".verification").css("color","red");
+				}else {
+					this.code_validate_msg = "";
+					$(".verification").css("color","green");
+				}
+			},
+			//手机用户注册事件
+			phone_submit(){
+
+					//调用其他验证方法
+					this.checkPhoneNumber();
+					this.check_code();
+					this.check_password_phone();
+					this.check_reader_phone();
+					if (!this.phone_validate_msg&&
+							!this.code_validate_msg&&
+							!this.passwordRepeat_validate_msg&&
+							this.reader_me
+					){
+						//发送请求提交表单
+						this.$http.post("/login/userPhone",this.phoneRegForm).then(res=>{
+							let {success,msg,data}=res.data;
+							alert(msg);
+						})
+					}
+			},
+
+
+			//邮箱注册的各个方法
+			//验证邮箱
+			checkEmail(){
+				//判断邮箱号
+				if (!this.emailRegForm.email){
+					//邮箱号为空则显示提示消息
+					this.email_validate_msg="邮箱不能为空";
+					//输入框变红
+					$(".user-email").css("color","red");
+					return;//一定要返回 不然会继续判断
+				}
+				//发送邮箱号进行比对请求
+				this.$http.get("/login/checkEmail/"+this.emailRegForm.email).then(res=>{
+					//console.debug(res.data);
+					let {success,msg,data}=res.data;
+					if (success){//该邮箱号没在数据库，可以注册 直接修改样式为绿色
+						$(".user-email").css("color","green");
+						this.email_validate_msg="";
+					}else {
+						//显示提示消息
+						this.email_validate_msg=msg;//该邮箱已被注册
+						//输入框变红
+						$(".user-email").css("color","red");
+					}
+				})
+
+			},
+			//验证密码
+			checkPassword(){
+				if (!this.emailRegForm.password||!this.emailRegForm.passwordRepeat){
+					//提示密码不能为空
+					this.password_validate_msg_email = "密码不能为空";
+					$('.passwordFirst').css("color","red");
+					return;
+				}else if (this.emailRegForm.password!=this.emailRegForm.passwordRepeat){
+					this.password_validate_msg_email = "确认密码必须一致";
+					$('.passwordFirst').css("color","red");
+					return;
+				}
+				//成功验证相同
+				this.password_validate_msg_email = "";
+				$('.passwordFirst').css("color","green");
+			},
+			check_reader_email(){
+				if (!this.reader_me_email){
+					$('.login-links').css("color","red");
+				}else {
+					$('.login-links').css("color","green");
+				}
+			},
+			//邮箱注册提交事件
+			emailSubmit(){
+				//调用其他验证方法
+				this.checkEmail();
+				this.checkPassword();
+				this.check_reader_email();
+				//都验证成功才发请求
+				if (!this.password_validate_msg_email&&
+						!this.email_validate_msg&&
+						this.reader_me_email
+				){
+					//发送请求提交表单
+					this.$http.post("/login/userEmail",this.emailRegForm).then(res=>{
+						let {success,msg,data}=res.data;
+						//alert(msg);
+						if (success){
+							//成功后返回的是个map保存了redis的uuid 和返回user对象的字符串
+							//windows自带对象 sessionstorage是会话存储 关闭浏览器就没了
+							//保存在本地存储里 相当于模拟了cookie
+							localStorage.setItem("userToken",data.userToken);
+							localStorage.setItem("loginUser",data.loginUser);
+							//跳转到首页
+							location.href="index.html";
+						}
+					})
+				}
+
+			}
+		}
+	})
+</script>
+
+</html>

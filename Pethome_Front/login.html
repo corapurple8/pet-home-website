@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="stylesheet" href="./AmazeUI-2.4.2/assets/css/amazeui.css" />
+	<link href="./css/dlstyle.css" rel="stylesheet" type="text/css">
+	<script src="./AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+	<script src="./AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+	<!--导入vue包-->
+	<script src="plugins/vue/dist/vue.js"></script>
+	<!--导入axios包-->
+	<script src="plugins/axios/dist/axios.js"></script>
+	<!--导入全局设置-->
+	<script src="js/common.js"></script>
+	<script type="text/css">
+		.validate_msg{
+			font-size: 12px;
+			color: red;
+		}
+	</script>
+</head>
+
+<body>
+
+<div class="login-boxtitle">
+	<a href="home.html"><img alt="logo" src="./images/logobig.png" /></a>
+</div>
+
+<div class="login-banner">
+	<div class="login-main">
+		<div class="login-banner-bg"><span></span><img src="./images/big.jpg" /></div>
+		<div class="login-box" id="app">
+
+			<div class="am-tabs" id="doc-my-tabs">
+				<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+					<li class="am-active"><a href="">账号登录</a></li>
+					<li><a href="">手机验证码登录</a></li>
+				</ul>
+				<div class="am-tabs-bd">
+					<div class="am-tab-panel am-active">
+						<div>
+							<form :model="userLogForm">
+								<div class="user-name">
+									<label for="user"><i class="am-icon-user"></i></label>
+									<input @blur="checkUsername" type="text" id="user" v-model="userLogForm.username" placeholder="邮箱/手机/用户名">
+									<span class="validate_msg">{{username_validate_msg}}</span>
+								</div>
+								<div class="user-pass">
+									<label for="password"><i class="am-icon-lock"></i></label>
+									<input @blur="checkPassword" type="password" id="password" name="password" v-model="userLogForm.password" placeholder="请输入密码">
+									<span class="validate_msg">{{password_validate_msg}}</span>
+								</div>
+							</form>
+							<div class="login-links">
+								<a href="#" class="am-fr" >忘记密码</a>
+								<a href="register.html" class="am-fr" style="float: left">注册</a>
+								<br />
+							</div>
+							<div class="am-cf">
+								<input type="submit" @click="userLogin" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
+							</div>
+							<div class="partner">
+								<h3>合作账号</h3>
+								<div class="am-btn-group">
+									<li><a href="#"><i class="am-icon-qq am-icon-sm"></i><span>QQ登录</span></a></li>
+									<li><a href="#"><i class="am-icon-weibo am-icon-sm"></i><span>微博登录</span> </a></li>
+									<li><a href="javascript:void(0)" @click="wechatLogin"><i class="am-icon-weixin am-icon-sm"></i><span>微信登录</span> </a></li>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="am-tab-panel">
+						<form method="post" :model="phoneLoginForm">
+							<div class="user-phone">
+								<label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
+								<input required="required" @blur="checkPhone" type="tel" id="phone" v-model="phoneLoginForm.phone" placeholder="请输入手机号">
+								<span class="validate_msg">{{phone_validate_msg}}</span>
+							</div>
+							<div class="verification">
+								<label for="code"><i class="am-icon-code-fork"></i></label>
+								<input required="required" type="tel" @blur="checkCode" v-model="phoneLoginForm.code" id="code" placeholder="请输入验证码" >
+
+								<button type="button" class="btn" @click="sendMobileCode"  id="dyMobileButton" :disabled="btnDisabled">{{btnText}}
+								</button>
+								<div><span class="validate_msg">{{code_validate_msg}}</span></div>
+							</div>
+							<div style="display: inline" lable="">
+								<input type="radio" v-model="phoneLoginForm.type" :lable="1">普通用户
+								<input type="radio" v-model="phoneLoginForm.type" :lable="2">商家/管理员
+							</div>
+						</form>
+						<div class="login-links">
+							<a href="register.html" class="am-fr" style="float:left;">注册</a>
+							<br />
+						</div>
+						<div class="am-cf">
+							<input type="submit" @click="phoneLogin" value="登 录" class="am-btn am-btn-primary am-btn-sm">
+						</div>
+						<div class="partner">
+							<h3>合作账号</h3>
+							<div class="am-btn-group">
+								<li><a href="#"><i class="am-icon-qq am-icon-sm"></i><span>QQ登录</span></a></li>
+								<li><a href="#"><i class="am-icon-weibo am-icon-sm"></i><span>微博登录</span> </a></li>
+								<li><a href="#"><i class="am-icon-weixin am-icon-sm"></i><span>微信登录</span> </a></li>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer ">
+	<div class="footer-hd ">
+		<p>
+			<a href="# ">恒望科技</a>
+			<b>|</b>
+			<a href="# ">商城首页</a>
+			<b>|</b>
+			<a href="# ">支付宝</a>
+			<b>|</b>
+			<a href="# ">物流</a>
+		</p>
+	</div>
+	<div class="footer-bd ">
+		<p>
+			<a href="# ">关于恒望</a>
+			<a href="# ">合作伙伴</a>
+			<a href="# ">联系我们</a>
+			<a href="# ">网站地图</a>
+		</p>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	$(function() {
+		$('#doc-my-tabs').tabs();//初始化选项卡组件
+	})
+	//挂载
+	let app = new Vue({
+		el:"#app",
+		data(){
+			return{
+				//用户登录表单
+				userLogForm:{
+					username:"",
+					password:"",
+					type:1,
+				},
+				username_validate_msg:"",//用户名验证失败消息
+				password_validate_msg:"",//密码验证失败消息
+
+
+				//手机号验证码登录表单
+				phoneLoginForm:{
+					phone:"",
+					code:"",
+					type:1,
+				},
+				btnDisabled:true,//禁用发送验证码按钮
+				btnText:"获取",//按钮内容
+				phone_validate_msg:"",//手机号验证失败提示消息
+				code_validate_msg:"",//验证码验证失败和验证码的提示消息
+
+
+				//第三方登录数据 微信提供的url 要填写自己开发者资质的一些数据替换 appid开发者唯一验证 redirect_uri回调页面 网页应用指定scope=snsapi_login
+				wechatLoginURL:"https://open.weixin.qq.com/connect/qrconnect?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE",
+				APPID:"wxd853562a0548a7d0",
+				REDIRECT_URI:"http://bugtracker.itsource.cn/wechatBind.html",//通过修改系统hosts在开发阶段替换外网域名为localhost 访问后端项目端口80
+				SCOPE:"snsapi_login",
+			}
+		},
+		methods:{
+
+			//账户登录的方法
+			//验证用户名
+			checkUsername(){
+
+				//判断用户名
+				if (!this.userLogForm.username){
+					//用户名为空则显示提示消息
+					this.username_validate_msg="用户名不能为空";
+					//输入框变红
+					$(".user-name").css("color","red");
+					return false;//一定要返回 不然会继续判断 且给后面注册时返回一个结果
+				}
+				//用户名不为空则通过
+				this.username_validate_msg="";
+				//输入框变红
+				$(".user-name").css("color","green");
+				return true;
+			},
+			//验证密码
+			checkPassword() {
+				if (!this.userLogForm.password){
+					//提示密码不能为空
+					this.password_validate_msg = "密码不能为空";
+					$('.user-pass').css("color","red");
+					return false;
+				}
+				//不为空
+				this.password_validate_msg = "";
+				$('.user-pass').css("color","green");
+				return true;
+			},
+			//提交表单 进行用户登录
+			userLogin(){
+				if (this.checkPassword()&this.checkUsername()){//使用单与可同时调用两个方法验证避免短路
+					this.$http.post("/login/login",this.userLogForm).then(res=>{//发送登录请求
+						let {success,msg,data}=res.data;
+						//alert(msg);
+						if (success){
+							//登录成功则跳转主页
+							//存储进本地存储
+							localStorage.setItem("userToken",data.userToken);
+							localStorage.setItem("loginUser",data.loginUser);
+							location.href="index.html";
+						}
+					})
+				}
+			},
+
+
+			//手机号验证码登录方法
+			checkCode(){
+				if (!this.phoneLoginForm.code){
+					this.code_validate_msg = "请输入验证码";
+					$(".verification").css("color","red");
+					return false;
+				}else {
+					this.code_validate_msg = "";
+					$(".verification").css("color","green");
+					return true;
+				}
+			},
+			checkPhone(){
+				//判断手机号
+				if (!this.phoneLoginForm.phone){
+					//手机号为空则显示提示消息
+					this.phone_validate_msg="手机号不能为空";
+					//输入框变红
+					$(".user-phone").css("color","red");
+					return false;//一定要返回 不然会继续判断
+				}
+				//正则表达式 开始^ 1 3(3-9的一个) 9个其他数 结束符
+				//如果手机号的格式不满足正则表达式
+				if (!/^1(3|4|5|6|7|8|9)[0-9]{9}$/.test(this.phoneLoginForm.phone)){
+					//显示提示消息
+					this.phone_validate_msg="请输入正确的手机号";
+					//输入框变红
+					$(".user-phone").css("color","red");
+					return false;
+				}
+				//手机号正确则变为绿色
+				$(".user-phone").css("color","green");
+				this.phone_validate_msg="";
+				//启用按钮
+				this.btnDisabled=false;
+				return true;
+			},
+			//发送验证码的点击事件
+			sendMobileCode(){
+				//设置为禁用按钮
+				this.btnDisabled = true;
+				//修改按钮内容为倒计时
+				//将当前this与计时器中this区分
+				let _this = this;
+				let time = 60;
+				_this.btnText = time;
+				let intervalID = setInterval(function () {
+					_this.btnText = --time;
+					if (time ==0){
+						//改为启用
+						_this.btnDisabled=false;
+						//将内容改回获取
+						_this.btnText="获取";
+						//结束定时任务
+						clearInterval(intervalID);
+					}
+				},1000)//每隔一秒钟改变值
+				//发送请求获取验证码
+				this.$http.get("/login/sendPhoneCodeForLog/"+this.phoneLoginForm.phone).then(res=>{
+					let {success,msg,data}=res.data;
+					if (!success){
+						this.code_validate_msg=msg;
+						//设置为红色
+						$(".verification").css("color","red")
+					}else {
+						this.code_validate_msg=msg;
+						$(".verification").css("color","green")
+					}
+				})
+			},
+			//手机验证码登录方法
+			phoneLogin(){
+				if (this.checkPhone()&this.checkCode()){//使用单与可同时调用两个方法验证避免短路
+					this.$http.post("/login/loginByPhone",this.phoneLoginForm).then(res=>{//发送登录请求
+						let {success,msg,data}=res.data;
+						//alert(msg);
+						if (success){
+							//登录成功则跳转主页
+							//存储进本地存储
+							localStorage.setItem("userToken",data.userToken);
+							localStorage.setItem("loginUser",data.loginUser);
+							location.href="index.html";
+						}else {
+							alert(msg);
+						}
+					})
+				}
+			},
+
+
+			//第三方登录 微信登录方法
+			wechatLogin(){
+				//直接跳转获取二维码页面
+				//替换开发者资质编号 重定向回调页面和域设置为网页应用
+				location.href=this.wechatLoginURL.replace("APPID",this.APPID)
+						.replace("REDIRECT_URI",this.REDIRECT_URI).replace("SCOPE",this.SCOPE)
+			},
+
+
+		},
+	})
+</script>
+</html>
